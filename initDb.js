@@ -1,6 +1,6 @@
-const pool = require('./db');
-const fs = require('fs');
-const path = require('path');
+import pool from './db';
+import fs from 'fs';
+import path from 'path';
 
 async function initDatabase() {
     try {

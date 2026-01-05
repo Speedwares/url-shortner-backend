@@ -19,7 +19,7 @@ function isValidUrl(url) {
     }
 }
 
-module.exports = {
+export {
     generateShortCode,
     isValidUrl
 };
