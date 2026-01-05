@@ -10,7 +10,7 @@ dotenv.config();
  * Instead of creating a new connection for each query,
  * it reuses connections from a pool
  */
-export const pool = new Pool({
+export const pool: Pool = new Pool({
     host: process.env.DB_HOST || 'localhost',
     port: parseInt(process.env.DB_PORT || '5432'),  // parseInt: convert string to number
     database: process.env.DB_NAME || 'urlshortener',
