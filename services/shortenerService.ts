@@ -1,5 +1,5 @@
 import { pool } from './../db.js';
-import { CreateShortUrlResult, UrlRow } from '../types/index.js';
+import { CreateShortUrlResult, UrlRow } from '../schemas/url.schema.js';
 
 /**
  * ShortenerService - Handles URL shortening logic

@@ -1,5 +1,7 @@
 import express, { Router } from 'express';
 import { UrlController } from '../controllers/urlController.js';
+import { validate } from '../middleware/validate.js';
+import { createShortUrlSchema } from '../schemas/url.schema.js';
 
 /**
  * Router: Express router for organizing routes
@@ -15,7 +17,8 @@ router.get('/', UrlController.healthCheck);
 
 // Create short URL endpoint
 // POST /api/shorten → Creates a short URL
-router.post('/api/shorten', UrlController.createShortUrl);
+// validate() middleware runs BEFORE controller (validates req.body)
+router.post('/api/shorten', validate(createShortUrlSchema), UrlController.createShortUrl);
 
 // Get URL statistics endpoint
 // GET /api/stats/:shortCode → Get stats for a short code

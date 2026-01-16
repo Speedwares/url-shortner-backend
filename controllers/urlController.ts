@@ -1,8 +1,7 @@
 import { Request, Response } from 'express';
-import { isValidUrl } from '../utils/urlShortener.js';
 import { ShortenerService } from '../services/shortenerService.js';
 import { UrlService } from '../services/urlService.js';
-import { CreateShortUrlBody } from '../types/index.js';
+import { CreateShortUrlRequest } from '../schemas/url.schema.js';
 
 /**
  * UrlController - Handles all URL-related HTTP requests
@@ -14,30 +13,18 @@ export class UrlController {
     /**
      * Create a short URL
      *
-     * @param req - Express Request object with typed body
-     * @param res - Express Response object
+     * @param req - Express Request (body already validated by Zod middleware)
+     * @param res - Express Response
      *
-     * Request<ParamsDictionary, any, CreateShortUrlBody> means:
-     * - ParamsDictionary: URL parameters (e.g., /:id)
-     * - any: Response body type (we'll define this in res.json)
-     * - CreateShortUrlBody: Request body type (what we receive)
+     * Note: No manual validation needed - Zod middleware handles it
      */
     static async createShortUrl(
-        req: Request<{}, any, CreateShortUrlBody>,
+        req: Request<{}, any, CreateShortUrlRequest>,
         res: Response
     ): Promise<Response | void> {
         try {
+            // Body is already validated by Zod middleware
             const { url } = req.body;
-
-            // Validate: URL must be provided
-            if (!url) {
-                return res.status(400).json({ error: 'URL is required' });
-            }
-
-            // Validate: URL must be valid format
-            if (!isValidUrl(url)) {
-                return res.status(400).json({ error: 'Invalid URL format' });
-            }
 
             // Use service to handle business logic
             const shortenerService = new ShortenerService(url);

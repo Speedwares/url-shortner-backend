@@ -1,5 +1,5 @@
 import { pool } from "../db.js";
-import { UrlStats, RedirectResult, UrlRow } from "../types/index.js";
+import { UrlStats, RedirectResult, UrlRow } from "../schemas/url.schema.js";
 
 /**
  * UrlService - Handles URL operations (fetch, update, stats)

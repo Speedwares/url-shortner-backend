@@ -9,7 +9,17 @@
     "start": "node dist/index.js",
     "init-db": "tsx initDb.js",
     "type-check": "tsc --noEmit",
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "test": "jest",
+    "test:watch": "jest --watch"
+    },
+  "jest": {
+    "testEnvironment": "node",
+    "coveragePathIgnorePatterns": [
+      "/node_modules/"
+    ],
+    "moduleFileExtensions": ["js", "json"],
+    "testMatch": ["**/__tests__/**/*.js", "**/?(*.)+(spec|test).js"],
+    "verbose": true
   },
   "keywords": [],
   "author": "",
@@ -21,12 +31,14 @@
     "express": "^5.2.1",
     "mongoose": "^9.0.2",
     "nodemon": "^3.1.11",
-    "pg": "^8.16.3"
+    "pg": "^8.16.3",
+    "zod": "^4.3.5"
   },
   "devDependencies": {
     "@types/express": "^5.0.6",
     "@types/node": "^25.0.3",
     "@types/pg": "^8.16.0",
+    "jest": "^30.2.0",
     "tsx": "^4.21.0",
     "typescript": "^5.9.3"
   }
