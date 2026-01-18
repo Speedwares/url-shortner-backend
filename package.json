@@ -9,17 +9,8 @@
     "start": "node dist/index.js",
     "init-db": "tsx initDb.js",
     "type-check": "tsc --noEmit",
-  "test": "jest",
+    "test": "jest",
     "test:watch": "jest --watch"
-    },
-  "jest": {
-    "testEnvironment": "node",
-    "coveragePathIgnorePatterns": [
-      "/node_modules/"
-    ],
-    "moduleFileExtensions": ["js", "json"],
-    "testMatch": ["**/__tests__/**/*.js", "**/?(*.)+(spec|test).js"],
-    "verbose": true
   },
   "keywords": [],
   "author": "",
@@ -36,9 +27,11 @@
   },
   "devDependencies": {
     "@types/express": "^5.0.6",
+    "@types/jest": "^30.0.0",
     "@types/node": "^25.0.3",
     "@types/pg": "^8.16.0",
     "jest": "^30.2.0",
+    "ts-jest": "^29.4.6",
     "tsx": "^4.21.0",
     "typescript": "^5.9.3"
   }
